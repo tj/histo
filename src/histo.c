@@ -91,13 +91,16 @@ draw_histogram(int data[], int len) {
 
   // plot data
   int x = 0;
+  int sx = xpad + 3;
+  int mx = (w - sx) / (xbarw + 1);
   for (int i = 0; i < len; ++i) {
+    if (x > mx) break;
     float p = 0 == data[i] ? 0 : (float) data[i] / m;
     int y = (h - ypad) * p;
     char *c = y < 0 ? "░" : "█";
     if (y < 0) y = -y;
     while (y--) {
-      term_move_to(x * xbarw + xpad + 3, y - 1 - h + ypad);
+      term_move_to(sx + x * xbarw, y - 1 - h + ypad);
       term_reset();
       printf("%s", c);
     }
