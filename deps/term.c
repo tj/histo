@@ -53,6 +53,7 @@ term_size(int *w, int *h) {
   if (ret < 0) return ret;
   *w = ws.ws_col;
   *h = ws.ws_row;
+  return 0;
 }
 
 /*
