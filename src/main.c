@@ -13,6 +13,10 @@
 #include <term.h>
 #include "histo.h"
 
+/*
+ * Reset on SIGINT.
+ */
+
 void
 on_sigint(int sig) {
   term_clear("screen");
@@ -20,35 +24,46 @@ on_sigint(int sig) {
   exit(1);
 }
 
+/*
+ * Histogram.
+ */
+
 int
 main(int argc, char **argv){
   command_t cmd;
   command_init(&cmd, argv[0], "0.0.1");
   command_parse(&cmd, argc, argv);
 
-  term_hide_cursor();
+  // term width for rotation
+  int w, h;
+  term_size(&w, &h);
+
+  // values
+  float vals[256];
+  int n = 0;
+
+  // term_hide_cursor();
   signal(SIGINT, on_sigint);
 
-start:
-  {
-    float data[] = { 0, 2, 3, 5, 3, 7, 3, 8, 10, 12, 4, 2, 4, 3, -1 };
-    draw_histogram(data);
-    sleep(1);
+  for (;;) {
+    float val;
+    int ret = fscanf(stdin, "%f", &val);
+
+    // EOF
+    if (feof(stdin)) exit(0);
+
+    // parse error
+    if (ret < 1) {
+      fprintf(stderr, "invalid input syntax\n");
+      exit(1);
+    }
+
+    // draw
+    vals[n++ % w] = val;
+    draw_histogram(vals, n > w ? w : n);
   }
 
-  {
-    float data[] = { 0, 2, 3, 1, 3, 3, 3, 8, 2, 12, 4, 2, 4, 3, -1 };
-    draw_histogram(data);
-    sleep(1);
-  }
-
-  {
-    float data[] = { 0, 0, 1, 2, 3, 7, 3, 8, 2, 12, 2, 2, 1, 3, -1 };
-    draw_histogram(data);
-    sleep(1);
-    goto start;
-  }
-
+  term_show_cursor();
   command_free(&cmd);
   return 0;
 }

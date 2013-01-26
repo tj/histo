@@ -49,7 +49,7 @@ term_move_by(int x, int y) {
 int
 term_size(int *w, int *h) {
   struct winsize ws;
-  int ret = ioctl(0, TIOCGWINSZ, &ws);
+  int ret = ioctl(1, TIOCGWINSZ, &ws);
   if (ret < 0) return ret;
   *w = ws.ws_col;
   *h = ws.ws_row;
@@ -72,14 +72,14 @@ term_erase_from_name(const char *name) {
 
 /*
  * Erase with `name`:
- * 
+ *
  *   - "end"
  *   - "start"
  *   - "line"
  *   - "up"
  *   - "down"
  *   - "screen"
- * 
+ *
  */
 
 int

@@ -9,6 +9,6 @@
 #define HISTO_H
 
 void
-draw_histogram(float data[]);
+draw_histogram(float data[], int len);
 
 #endif
