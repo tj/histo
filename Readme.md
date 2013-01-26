@@ -6,6 +6,11 @@
 
 ## Examples
 
+  `histo(1)` simply reads from stdin, so it works well with
+  streaming or non-streaming data, from any data source. This
+  repo includes some example files in `./examples`, as well
+  as some example shell scripts for streaming input.
+
 ### Static input
 
   `hist(1)` simply reads from stdin, so it's easy to throw static
