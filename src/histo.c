@@ -42,6 +42,7 @@ width_of(int n) {
 void
 draw_histogram(int data[], int len) {
   int m = max(data, len);
+  int xbarw = 5;
   int xpad = 4;
   int ypad = 4;
   int n = 0;
@@ -96,7 +97,7 @@ draw_histogram(int data[], int len) {
     char *c = y < 0 ? "░" : "█";
     if (y < 0) y = -y;
     while (y--) {
-      term_move_to(x * 5 + xpad + 3, y - 1 - h + ypad);
+      term_move_to(x * xbarw + xpad + 3, y - 1 - h + ypad);
       term_reset();
       printf("%s", c);
     }
