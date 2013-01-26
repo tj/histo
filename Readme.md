@@ -15,13 +15,26 @@
   - adjusts x-axis labels to the integer size
   - negative values reflect as shaded blocks
 
-
 ## Use-cases
 
   - cpu usage
   - memory usage
   - load averages
   - ...
+
+## Installation
+
+  With [cpm](https://github.com/visionmedia/cpm):
+
+```
+$ cpm install visionmedia/histo
+```
+
+  Or via git clone:
+
+```
+$ cd /tmp && git clone git://github.com/visionmedia/histo.git --depth 1 && cd histo && make install
+```
 
 ## Examples
 
