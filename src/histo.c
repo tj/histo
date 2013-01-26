@@ -53,6 +53,7 @@ draw_histogram(int data[], int len) {
   // histogram size
   int xw = width_of(m);
   int hh = h - ypad - 1;
+  xpad += xw;
 
   // clear
   term_clear("screen");
@@ -88,14 +89,14 @@ draw_histogram(int data[], int len) {
   }
 
   // plot data
-  int x = 1;
+  int x = 0;
   for (int i = 0; i < len; ++i) {
     float p = 0 == data[i] ? 0 : (float) data[i] / m;
     int y = (h - ypad) * p;
     char *c = y < 0 ? "░" : "█";
     if (y < 0) y = -y;
     while (y--) {
-      term_move_to(x * 5 + 1, y - 1 - h + ypad);
+      term_move_to(x * 5 + xpad + 2, y - 1 - h + ypad);
       term_reset();
       printf("%s", c);
     }
