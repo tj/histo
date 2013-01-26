@@ -1,6 +1,9 @@
 
 # Histo
 
+  Plot histograms in the terminal with arbitrary streaming
+  or non-streaming data. Also provides a C API.
+
 ## Examples
 
 ### Static input
