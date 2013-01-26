@@ -39,15 +39,15 @@ main(int argc, char **argv){
   term_size(&w, &h);
 
   // values
-  float vals[256];
+  int vals[256];
   int n = 0;
 
   // term_hide_cursor();
   signal(SIGINT, on_sigint);
 
   for (;;) {
-    float val;
-    int ret = fscanf(stdin, "%f", &val);
+    int val;
+    int ret = fscanf(stdin, "%d", &val);
 
     // EOF
     if (feof(stdin)) exit(0);

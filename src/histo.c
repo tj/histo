@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <term.h>
 #include "histo.h"
 
@@ -14,14 +15,24 @@
  * Return the maximum absolute value in `data`.
  */
 
-float
-max(float data[], int len) {
-  float n = data[0];
+int
+max(int data[], int len) {
+  int n = data[0];
   for (int i = 1; i < len; ++i) {
-    float c = data[i] < 0 ? -data[i] : data[i];
+    int c = data[i] < 0 ? -data[i] : data[i];
     n = c > n ? c : n;
   }
   return n;
+}
+
+/*
+ * Return the char-length of `n`.
+ */
+
+int
+width_of(int n) {
+  if (0 == n) return 1;
+  return (int) (log10(n) + 1);
 }
 
 /*
@@ -29,19 +40,35 @@ max(float data[], int len) {
  */
 
 void
-draw_histogram(float data[], int len) {
-  float m = max(data, len);
+draw_histogram(int data[], int len) {
+  int m = max(data, len);
   int pad = 4;
   int n = 0;
 
+  // term size
   int w, h;
   term_size(&w, &h);
+
+  // histogram size
+  int xw = width_of(m);
+  int hh = h - pad - 1;
 
   // clear
   term_clear("screen");
 
+  // y-axis labels
+  term_move_to(2, 1);
+  while (n < (hh + 1)) {
+    term_move_by(0, 2);
+    term_color("grey");
+    float p = (float) (hh-n) / hh;
+    printf("%3.0f", m * p);
+    n += 2;
+  }
+
   // y-axis
-  term_move_to(pad, 1);
+  n = 0;
+  term_move_to(3 + xw, 1);
   while (n < (h - pad - 1)) {
     term_move_by(0, 2);
     term_color("grey");
@@ -51,7 +78,7 @@ draw_histogram(float data[], int len) {
 
   // x-axis
   n = 0;
-  term_move_to(pad, h - 2);
+  term_move_to(2 + pad, h - 2);
   while (n < (w - pad * 3)) {
     term_color("grey");
     printf("․");
@@ -60,15 +87,14 @@ draw_histogram(float data[], int len) {
   }
 
   // plot data
-
   int x = 1;
   for (int i = 0; i < len; ++i) {
-    float p = 0 == data[i] ? 0 : data[i] / m;
+    float p = 0 == data[i] ? 0 : (float) data[i] / m;
     int y = (h - pad) * p;
     char *c = y < 0 ? "░" : "█";
     if (y < 0) y = -y;
     while (y--) {
-      term_move_to(x * 5 + pad, y - 1 - h + pad);
+      term_move_to(x * 5 + 1, y - 1 - h + pad);
       term_reset();
       printf("%s", c);
     }
