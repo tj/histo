@@ -42,7 +42,7 @@ width_of(int n) {
 void
 draw_histogram(int data[], int len) {
   int m = max(data, len);
-  int xbarw = 5;
+  int xbarw = 2;
   int xpad = 4;
   int ypad = 4;
   int n = 0;
@@ -85,8 +85,8 @@ draw_histogram(int data[], int len) {
   while (n < (w - xpad * 3)) {
     term_color("grey");
     printf("․");
-    term_move_by(5, 0);
-    n += 5;
+    term_move_by(xbarw, 0);
+    n += xbarw;
   }
 
   // plot data
