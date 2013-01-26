@@ -42,7 +42,8 @@ width_of(int n) {
 void
 draw_histogram(int data[], int len) {
   int m = max(data, len);
-  int pad = 4;
+  int xpad = 4;
+  int ypad = 4;
   int n = 0;
 
   // term size
@@ -51,7 +52,7 @@ draw_histogram(int data[], int len) {
 
   // histogram size
   int xw = width_of(m);
-  int hh = h - pad - 1;
+  int hh = h - ypad - 1;
 
   // clear
   term_clear("screen");
@@ -69,7 +70,7 @@ draw_histogram(int data[], int len) {
   // y-axis
   n = 0;
   term_move_to(3 + xw, 1);
-  while (n < (h - pad - 1)) {
+  while (n < (h - ypad - 1)) {
     term_move_by(0, 2);
     term_color("grey");
     printf("․");
@@ -78,8 +79,8 @@ draw_histogram(int data[], int len) {
 
   // x-axis
   n = 0;
-  term_move_to(2 + pad, h - 2);
-  while (n < (w - pad * 3)) {
+  term_move_to(2 + xpad, h - 2);
+  while (n < (w - xpad * 3)) {
     term_color("grey");
     printf("․");
     term_move_by(5, 0);
@@ -90,11 +91,11 @@ draw_histogram(int data[], int len) {
   int x = 1;
   for (int i = 0; i < len; ++i) {
     float p = 0 == data[i] ? 0 : (float) data[i] / m;
-    int y = (h - pad) * p;
+    int y = (h - ypad) * p;
     char *c = y < 0 ? "░" : "█";
     if (y < 0) y = -y;
     while (y--) {
-      term_move_to(x * 5 + 1, y - 1 - h + pad);
+      term_move_to(x * 5 + 1, y - 1 - h + ypad);
       term_reset();
       printf("%s", c);
     }
