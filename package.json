@@ -1,0 +1,9 @@
+{
+  "name": "histo",
+  "version": "0.0.1",
+  "repo": "visionmedia/histo",
+  "description": "histogram plotting from arbitrary static or dynamic input",
+  "keywords": ["histogram", "chart", "graph", "plot", "stats", "statistics"],
+  "license": "MIT",
+  "src": ["src/histo.c", "src/histo.h"]
+}
