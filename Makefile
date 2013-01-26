@@ -2,11 +2,19 @@
 SRC = $(wildcard src/*.c)
 SRC += $(wildcard deps/*.c)
 OBJ = $(SRC:.c=.o)
+PREFIX=/usr/local
+BIN=histo
 
 histo: $(SRC)
 	$(CC) $^ -std=c99 -lm -I deps -o $@
 
-clean:
-	rm -f histo $(OBJ)
+install: $(BIN)
+	install $(BIN) $(PREFIX)/bin
 
-.PHONY: clean
+uninstall:
+	rm $(PREFIX)/bin/$(BIN)
+
+clean:
+	rm -f $(BIN) $(OBJ)
+
+.PHONY: clean install uninstall
