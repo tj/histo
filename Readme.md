@@ -6,6 +6,23 @@
 
   ![terminal histogram](http://i.cloudup.com/1359230211455.54961fc5a2db5b350ca5f1f89b8d37b3.png)
 
+## Features
+
+  - simple input via __stdin__
+  - simple C API for integration in your tools
+  - supports static or streaming data
+  - adjusts to terminal width and height
+  - adjusts x-axis labels to the integer size
+  - negative values reflect as shaded blocks
+
+
+## Use-cases
+
+  - cpu usage
+  - memory usage
+  - load averages
+  - ...
+
 ## Examples
 
   `histo(1)` simply reads from stdin, so it works well with
@@ -61,7 +78,7 @@ done
 $ sh example.sh | histo
 ```
 
-## Features
+## Screenshots
 
   Negative values are shown as shaded blocks:
 
