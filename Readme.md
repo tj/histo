@@ -2,7 +2,11 @@
 # Histo
 
   Plot histograms in the terminal with arbitrary streaming
-  or non-streaming data. Also provides a C API.
+  or non-streaming data.
+
+```
+$ histo < data.txt
+```
 
   ![terminal histogram](http://i.cloudup.com/1359230211455.54961fc5a2db5b350ca5f1f89b8d37b3.png)
 
