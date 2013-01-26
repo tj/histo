@@ -71,7 +71,7 @@ draw_histogram(int data[], int len) {
   // y-axis
   n = 0;
   term_move_to(3 + xw, 1);
-  while (n < (h - ypad - 1)) {
+  while (n < (h - ypad)) {
     term_move_by(0, 2);
     term_color("grey");
     printf("․");
