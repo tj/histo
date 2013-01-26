@@ -12,7 +12,7 @@
 
 // microseconds
 
-#define US_MSEC (long long)1000
+#define US_MSEC (long long) 1000
 #define US_SEC 1000 * US_MSEC
 #define US_MIN 60 * US_SEC
 #define US_HOUR 60 * US_MIN
@@ -91,7 +91,7 @@ char *
 milliseconds_to_string(long long ms) {
   char *str = malloc(MS_MAX);
   if (!str) return NULL;
-  long div = 1;
+  long long div = 1;
   char *fmt;
 
   if (ms < MS_SEC) fmt = "%lldms";
@@ -113,7 +113,7 @@ milliseconds_to_string(long long ms) {
 
 char *
 milliseconds_to_long_string(long long ms) {
-  long div;
+  long long div;
   char *name;
 
   char *str = malloc(MS_MAX);
