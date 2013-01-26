@@ -5,6 +5,5 @@
   "description": "histogram plotting from arbitrary static or dynamic input",
   "keywords": ["histogram", "chart", "graph", "plot", "stats", "statistics"],
   "license": "MIT",
-  "install": "make install",
-  "src": ["src/histo.c", "src/histo.h"]
+  "install": "make install"
 }
