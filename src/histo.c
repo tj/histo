@@ -62,7 +62,7 @@ draw_histogram(int data[], int len) {
     term_move_by(0, 2);
     term_color("grey");
     float p = (float) (hh-n) / hh;
-    printf("%3.0f", m * p);
+    printf("%*.0f", xw, m * p);
     n += 2;
   }
 
