@@ -80,7 +80,7 @@ draw_histogram(int data[], int len) {
 
   // x-axis
   n = 0;
-  term_move_to(2 + xpad, h - 2);
+  term_move_to(3 + xpad, h - 2);
   while (n < (w - xpad * 3)) {
     term_color("grey");
     printf("․");
@@ -96,7 +96,7 @@ draw_histogram(int data[], int len) {
     char *c = y < 0 ? "░" : "█";
     if (y < 0) y = -y;
     while (y--) {
-      term_move_to(x * 5 + xpad + 2, y - 1 - h + ypad);
+      term_move_to(x * 5 + xpad + 3, y - 1 - h + ypad);
       term_reset();
       printf("%s", c);
     }
