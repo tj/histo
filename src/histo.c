@@ -83,9 +83,6 @@ draw_histogram(int data[], int len) {
     n += 2;
   }
 
-// these two lines to test term_move_to
-  term_move_to(3 + xpad, h);
-  printf("x-axis");
   // x-axis
   n = 0;
   term_move_to(3 + xpad, h - 2);
@@ -95,7 +92,6 @@ draw_histogram(int data[], int len) {
     term_move_by(xbarw, 0);
     n += xbarw;
   }
-//  printf("x-axis");
   // plot data
   int x = 0;
   int sx = xpad + 3;
