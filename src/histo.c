@@ -59,13 +59,17 @@ draw_histogram(int data[], int len) {
   // clear
   term_clear("screen");
 
+  float old_p = 0;
   // y-axis labels
   term_move_to(2, 1);
   while (n < (hh + 1)) {
     term_move_by(0, 2);
     term_color("grey");
     float p = (float) (hh-n) / hh;
-    printf("%*.0f", xw, m * p);
+    if(lroundf(m * p) != lroundf(m * old_p)){
+    	printf("%*.0f", xw, m * p);
+    }
+    old_p = p;
     n += 2;
   }
 
@@ -79,6 +83,9 @@ draw_histogram(int data[], int len) {
     n += 2;
   }
 
+// these two lines to test term_move_to
+  term_move_to(3 + xpad, h);
+  printf("x-axis");
   // x-axis
   n = 0;
   term_move_to(3 + xpad, h - 2);
@@ -88,7 +95,7 @@ draw_histogram(int data[], int len) {
     term_move_by(xbarw, 0);
     n += xbarw;
   }
-
+//  printf("x-axis");
   // plot data
   int x = 0;
   int sx = xpad + 3;
