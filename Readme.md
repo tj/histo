@@ -1,4 +1,3 @@
-
 # Histo
 
   Plot charts in the terminal with arbitrary streaming
@@ -49,7 +48,7 @@ $ cd /tmp && git clone git://github.com/visionmedia/histo.git --depth 1 && cd hi
 
 ### Static input
 
-  `hist(1)` simply reads from stdin, so it's easy to throw static
+  `histo(1)` simply reads from stdin, so it's easy to throw static
   data at it for quick analysis:
 
 ```
@@ -86,13 +85,7 @@ $ histo < example.txt
 while true; do
   echo $RANDOM
   sleep .5
-done
-```
-
-  Display with:
-
-```
-$ sh example.sh | histo
+done | histo
 ```
 
 ## Screenshots
