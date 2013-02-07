@@ -1,7 +1,7 @@
 
 # Histo
 
-  Plot histograms in the terminal with arbitrary streaming
+  Plot charts in the terminal with arbitrary streaming
   or non-streaming data.
 
 ```
