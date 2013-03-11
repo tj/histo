@@ -31,7 +31,7 @@ on_sigint(int sig) {
 int
 main(int argc, char **argv){
   command_t cmd;
-  command_init(&cmd, argv[0], "0.0.1");
+  command_init(&cmd, argv[0], "0.0.2");
   command_parse(&cmd, argc, argv);
 
   // term width for rotation
