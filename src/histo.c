@@ -100,7 +100,7 @@ draw_histogram(int data[], int len) {
     char *c = y < 0 ? "░" : "█";
     if (y < 0) y = -y;
     while (y--) {
-      term_move_to(sx + x * xbarw, y - 1 - h + ypad);
+      term_move_to(sx + x * xbarw, abs(y - 1 - h + ypad));
       term_reset();
       printf("%s", c);
     }
