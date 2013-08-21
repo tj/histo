@@ -3,7 +3,18 @@
   "version": "0.0.1",
   "repo": "visionmedia/histo",
   "description": "histogram plotting from arbitrary static or dynamic input",
-  "keywords": ["histogram", "chart", "graph", "plot", "stats", "statistics"],
+  "keywords": [
+    "histogram",
+    "chart",
+    "graph",
+    "plot",
+    "stats",
+    "statistics"
+  ],
   "license": "MIT",
-  "install": "make install"
+  "install": "make install",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/visionmedia/histo.git"
+  }
 }
